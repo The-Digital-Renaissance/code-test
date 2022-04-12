@@ -28,8 +28,28 @@ const useAPI = () => {
     return [];
   }, []);
 
+  const login = async (data: any) => {
+    try {
+      const response = await fetch(`${process.env.REACT_APP_API_URL}/authenticate`, {
+        method: 'POST',
+        mode: 'cors',
+        body: JSON.stringify(data)
+      });
+
+      if (response.status !== 200) {
+        toast(`API request failed`, { type: 'error' });
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.log(error)
+      toast(`API request failed`, { type: 'error' });
+    }
+  }
+
   return {
-    getTasks
+    getTasks,
+    login
   };
 };
 

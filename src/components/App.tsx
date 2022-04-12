@@ -7,16 +7,21 @@ import { Switch, Route, Redirect, NavLink } from 'react-router-dom';
 
 import './App.scss';
 import Welcome from './Welcome';
+import Login from './Login';
 
 const App: FC = () => {
   return (
     <div className="App">
       <nav>
         <NavLink to="/">Welcome</NavLink>
+        <NavLink to="/login">Login</NavLink>
       </nav>
       <Switch>
         <Route exact path="/">
           <Welcome />
+        </Route>
+        <Route exact path="/login">
+          <Login />
         </Route>
         <Redirect to="/" />
       </Switch>
